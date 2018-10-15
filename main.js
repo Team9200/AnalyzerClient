@@ -1,15 +1,23 @@
-const {app, BrowserWindow} = require('electron')
+const {
+  app,
+  BrowserWindow
+} = require('electron')
 
 let mainWindow
 
-function createWindow () {
-  mainWindow = new BrowserWindow({width: 400, height: 500})
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 400,
+    height: 500,
+    resizable: false
+  })
   mainWindow.setMenu(null);
 
   mainWindow.loadFile('./app/src/index.html')
   mainWindow.on('closed', function () {
     mainWindow = null
   })
+  mainWindow.webContents.openDevTools();
 }
 
 app.on('ready', createWindow)

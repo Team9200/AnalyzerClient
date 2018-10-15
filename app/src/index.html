@@ -4,24 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <title>AnalyzerClient</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="../resources/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="../resources/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
+    <link href="../resources/css/index.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+        crossorigin="anonymous">
 </head>
 
 <body>
+    <form class="pure-form">
+        <input id="file" type="file" webkitdirectory directory>
+    </form>
+    <br>
+    <div class="center">
+        <button class="pure-button pure-button-active">ON</button>
+        <button class="pure-button">OFF</button>
+    </div>
 
+    <br><br>
+    <table class="pure-table pure-table-bordered">
+        <thead>
+            <tr>
+                <th>Path</th>
+                <th>Analysis</th>
+                <th>Report</th>
+            </tr>
+        </thead>
 
+        <tbody>
+            <tr>
+                <td>C:\Program Files\cd.exe</td>
+                <td>Not Yet</td>
+                <td><button class="pure-button">Write</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-
-
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="../resources/js/materialize.js"></script>
-    <script src="../resources/js/init.js"></script>
-    <script>
-        require('./renderer/index.js')
-    </script>
+    <script src="../resources/js/jquery.js"></script>
+    <script src="../../renderer/index.js"></script>
 </body>
 
 </html>
