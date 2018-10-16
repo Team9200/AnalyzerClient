@@ -5,22 +5,30 @@
     <meta charset="UTF-8">
     <title>AnalyzerClient</title>
     <link href="../resources/css/index.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
 <body>
-    <form class="pure-form">
-        <input id="file" type="file" webkitdirectory directory>
-    </form>
+    <div class="col s12 filebox">
+        <input class="upload-name" value="파일선택" disabled="disabled" webkitdirectory directory>
+        <label for="ex_filename">업로드</label>
+        <input type="file" id="ex_filename" class="upload-hidden" webkitdirectory directory>
+
+    </div>
     <br>
-    <div class="center">
-        <button class="pure-button pure-button-active">ON</button>
-        <button class="pure-button">OFF</button>
+
+    <div class="center switch">
+        <label>
+            Off
+            <input type="checkbox">
+            <span class="lever"></span>
+            On
+        </label>
     </div>
 
-    <br><br>
-    <table class="pure-table pure-table-bordered">
+    <br>
+
+    <table class="centered">
         <thead>
             <tr>
                 <th>Path</th>
@@ -31,16 +39,18 @@
 
         <tbody>
             <tr>
-                <td>C:\Program Files\cd.exe</td>
+                <td>C:\Path\x.exe</td>
                 <td>Not Yet</td>
-                <td><button class="pure-button">Write</button>
+                <td><a class="waves-effect waves-light btn">Write</a>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <script src="../resources/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
     <script src="../../renderer/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </body>
 
 </html>
