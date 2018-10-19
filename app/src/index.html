@@ -11,19 +11,15 @@
 <body>
     <div class="col s12 filebox">
         <input class="upload-name" value="파일선택" disabled="disabled" webkitdirectory directory>
-        <label for="ex_filename">업로드</label>
+        <label class="btn" style="color: white;" for="ex_filename">업로드</label>
         <input type="file" id="ex_filename" class="upload-hidden" webkitdirectory directory>
 
     </div>
     <br>
 
-    <div class="center switch">
-        <label>
-            Off
-            <input type="checkbox">
-            <span class="lever"></span>
-            On
-        </label>
+    <div class="center">
+        <button class="btn" style="color: white; font-size: 15px; background-color: green;">ON</button>
+        <button class="btn" style="color: white; font-size: 15px; background-color: red;">OFF</button> 
     </div>
 
     <br>
@@ -41,7 +37,7 @@
             <tr>
                 <td>C:\Path\x.exe</td>
                 <td>Not Yet</td>
-                <td><a class="waves-effect waves-light btn">Write</a>
+                <td><button id="write" class="waves-effect waves-light btn">Write</button>
                 </td>
             </tr>
         </tbody>

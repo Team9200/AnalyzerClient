@@ -1,35 +1,29 @@
 const {
   app,
-  BrowserWindow
+  ipcMain
 } = require('electron')
+const window = require('./window');
 
-let mainWindow
-
-function createWindow() {
-  mainWindow = new BrowserWindow({
-    width: 400,
-    height: 500,
-    resizable: false
-  })
-  mainWindow.setMenu(null);
-
-  mainWindow.loadFile('./app/src/index.html')
-  mainWindow.on('closed', function () {
-    mainWindow = null
-  })
-  mainWindow.webContents.openDevTools();
-}
-
-app.on('ready', createWindow)
+app.on('ready', window.createMainWindow);
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
 })
 
 app.on('activate', function () {
   if (mainWindow === null) {
-    createWindow()
+    window.createMainWindow();
   }
 })
+
+ipcMain.on('menu', function (event, message) {
+  switch (message) {
+    case 'write':
+      window.createReportWindow();
+      break;
+    default:
+      break;
+  }
+});

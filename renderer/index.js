@@ -1,3 +1,6 @@
+const {ipcRenderer} = require('electron');
+var write = document.querySelector("#write");
+
 $(document).ready(function () {
     var fileTarget = $('.filebox .upload-hidden');
     fileTarget.on('change', function () {
@@ -8,4 +11,8 @@ $(document).ready(function () {
         }
         $(this).siblings('.upload-name').val(filename);
     });
+});
+
+write.addEventListener('click', function () {
+    ipcRenderer.send('menu', 'write');
 });
