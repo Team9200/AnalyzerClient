@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    receive~
+    <script>
+            const { ipcRenderer, remote } = require('electron');
+            ipcRenderer.on('receivedFile-reply', (event, msg) => {
+                console.log('e closeWin');
+                const window = remote.getCurrentWindow();
+                window.close();
+            });
+    </script>
+    <script src="../resources/js/transfer.js"></script>
+</html>

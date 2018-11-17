@@ -1,52 +1,42 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>AnalyzerClient</title>
-    <link href="../resources/css/index.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
 <body>
-    <div class="col s12 filebox">
-        <input class="upload-name" value="파일선택" disabled="disabled" webkitdirectory directory>
-        <label class="btn" style="color: white;" for="ex_filename">업로드</label>
-        <input type="file" id="ex_filename" class="upload-hidden" webkitdirectory directory>
-
-    </div>
-    <br>
-
-    <div class="center">
-        <button class="btn" style="color: white; font-size: 15px; background-color: green;">ON</button>
-        <button class="btn" style="color: white; font-size: 15px; background-color: red;">OFF</button> 
-    </div>
+    <button id="reqFile">Request File</button>
 
     <br>
+    <br>
 
-    <table class="centered">
-        <thead>
-            <tr>
-                <th>Path</th>
-                <th>Analysis</th>
-                <th>Report</th>
-            </tr>
-        </thead>
+    <ul id="fileLists">
+    </ul>
 
-        <tbody>
-            <tr>
-                <td>C:\Path\x.exe</td>
-                <td>Not Yet</td>
-                <td><button id="write" class="waves-effect waves-light btn">Write</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <button id="write">write</button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
-    <script src="../../renderer/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        const { ipcRenderer } = require('electron');
+        var fileLists = document.getElementById('fileLists');
+        var reqFile = document.getElementById('reqFile');
+        var write = document.getElementById('write');
 
+        reqFile.addEventListener('click', function () {
+            ipcRenderer.send("requestFile");
+        });
+
+        ipcRenderer.on("fileList", (event, message) => {
+            message.forEach((value, index) => {
+                fileLists.innerHTML = fileLists.innerHTML + "<li>" + value + "</li>";
+            })
+        });
+        
+        write.addEventListener('click', function () {
+            ipcRenderer.send("write");
+        });
+
+    </script>
 </body>
 
 </html>
